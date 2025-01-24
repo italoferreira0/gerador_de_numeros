@@ -1,0 +1,45 @@
+body{
+    background-color: rgba(69, 110, 188, 0.57);
+}
+
+h1{
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: whitesmoke;
+    font-style: italic;
+    font-family:'Times New Roman', Times, serif;
+    
+}
+
+.section-table{
+    padding: 20px;
+    border: solid 1px rgb(94, 94, 94);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    border-radius: 60px;
+    width: 80%;
+}
+th{
+    background-color: rgb(94, 94, 94);
+    height: 40px;
+    border: solid 1px black;
+}
+
+table,tr,td {
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;  
+    border: solid 1px rgb(94, 94, 94);
+    border-radius: 50x;
+    
+}
+
+td,th{
+    color: rgb(255, 255, 255);
+}
