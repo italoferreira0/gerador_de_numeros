@@ -21,6 +21,7 @@ from gerador.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', viewGerador, name='gerador'),
+    path('analytics/', viewAnalytics, name='analytics'),
 
     path('processar_input/', processar_input, name='processar_input'),
     path('geradorLista', GeradorListView.as_view(), name='geradorLista'),

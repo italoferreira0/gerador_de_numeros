@@ -9,3 +9,5 @@ class NumerosGerados(models.Model):
 
     class Meta:
         ordering = ['dataCriacao']
+        verbose_name = 'Numeros Gerado'
+    

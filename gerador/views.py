@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.db.models import Sum
 
 
@@ -46,3 +46,15 @@ class GeradorListView(ListView):
         context['soma_total'] = soma_total
             
         return context
+
+def viewAnalytics(request):
+    numeros = NumerosGerados.objects.all()
+
+    # Preparar os dados para o gráfico
+    labels = [v.numeroGerado for v in numeros]  # Eixo X
+    data = [v.dataCriacao.strftime("%Y-%m-%d") for v in numeros]  # Eixo Y (convertido para string)
+
+    return render(request, 'gerador/analytics.html', {
+        "labels": labels,
+        "data": data
+    })
