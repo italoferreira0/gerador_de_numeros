@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.db.models import Sum
@@ -48,13 +49,22 @@ class GeradorListView(ListView):
         return context
 
 def viewAnalytics(request):
+    data_inicial = request.GET.get("dataInicial")
+    data_final = request.GET.get("dataFinal")
     numeros = NumerosGerados.objects.all()
 
+     # Aplicar filtro se as datas forem fornecidas
+    if data_inicial and data_final:
+        data_inicial = datetime.strptime(data_inicial, "%Y-%m-%d")
+        data_final = datetime.strptime(data_final, "%Y-%m-%d")
+        numeros = numeros.filter(dataCriacao__range=[data_inicial, data_final])
+        print(numeros)
+    
     # Preparar os dados para o gráfico
     labels = [v.numeroGerado for v in numeros]  # Eixo X
     data = [v.dataCriacao.strftime("%Y-%m-%d") for v in numeros]  # Eixo Y (convertido para string)
 
     return render(request, 'gerador/analytics.html', {
-        "labels": labels,
+        "labels": labels,  # Enviando para o Front-end
         "data": data
     })

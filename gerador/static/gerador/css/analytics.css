@@ -1,0 +1,14 @@
+body{
+    background-color: rgba(69, 110, 188, 0.57);
+}
+
+h1{
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: whitesmoke;
+    font-style: italic;
+    font-family:'Times New Roman', Times, serif;
+    
+}
