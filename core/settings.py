@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'gerador.apps.GeradorConfig',
     "crispy_forms",
     "crispy_bootstrap5",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

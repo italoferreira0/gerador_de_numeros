@@ -15,8 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from gerador.views import *
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'Numeros Gerados', NumerosGeradosViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +31,5 @@ urlpatterns = [
     path('processar_input/', processar_input, name='processar_input'),
     path('geradorLista', GeradorListView.as_view(), name='geradorLista'),
     
+    path('api/', include(router.urls))
 ]

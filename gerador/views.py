@@ -3,13 +3,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.db.models import Sum
 
-
 from .utils import gerar_numero
 from .models import NumerosGerados
 
-
 from django.views.generic import ListView
 # Create your views here.
+
+from rest_framework import viewsets
+from .serializer import NumerosGeradosSerializer
 
 def processar_input(request):
     if request.method == 'POST':
@@ -68,3 +69,10 @@ def viewAnalytics(request):
         "labels": labels,  # Enviando para o Front-end
         "data": data
     })
+
+
+class NumerosGeradosViewSet(viewsets.ModelViewSet):
+    queryset = NumerosGerados.objects.all()
+    serializer_class = NumerosGeradosSerializer
+
+
