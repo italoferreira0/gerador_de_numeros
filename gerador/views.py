@@ -75,4 +75,5 @@ class NumerosGeradosViewSet(viewsets.ModelViewSet):
     queryset = NumerosGerados.objects.all()
     serializer_class = NumerosGeradosSerializer
 
-
+def viewAnalyticsAPI(request):
+    return render(request,'gerador/analytics_api.html')

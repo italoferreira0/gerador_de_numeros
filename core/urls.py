@@ -20,13 +20,14 @@ from gerador.views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'Numeros Gerados', NumerosGeradosViewSet)
+router.register(r'NumerosGerados', NumerosGeradosViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', viewGerador, name='gerador'),
     path('analytics/', viewAnalytics, name='analytics'),
+    path('analytics_api/', viewAnalyticsAPI, name='analytics_api'),
 
     path('processar_input/', processar_input, name='processar_input'),
     path('geradorLista', GeradorListView.as_view(), name='geradorLista'),

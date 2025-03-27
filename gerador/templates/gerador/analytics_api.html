@@ -39,8 +39,9 @@
             </div>
         </nav>
         <main>
-            <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;">Analytics</h1>
+            <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;">Analytics API</h1>
             <br>
+
             <div style="display:block;">
                 <form method="GET" action="{% url 'analytics' %}" style="text-align:center;">
                     <label for="dataInicial">Data Inicial:</label>
@@ -50,38 +51,16 @@
                     <input type="date" name="dataFinal" id="dataFinal" class="form-text">
                 
                     <button class="btn btn-primary btn-sm" type="submit">Filtrar</button>
-                    <a class="btn btn-success btn-sm" type="button" href="{% url "analytics" %}">Tempo Real</a>
+                    <a class="btn btn-success btn-sm" type="button" href="{% url "analytics_api" %}">Tempo Real</a>
                 </form>
-                <div id="chartBar"></div>
+                <div id="grafico"></div>
                 {% comment %} <div id="chartLine"></div> {% endcomment %}
             </div>
+            <script src='{% static "gerador/js/analytics_api.js" %}'></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         </main>
-        <script>
-            // Passando os dados diretamente no template Django
-            var labels = {{ labels|safe }};  // Garantir que seja uma lista válida no JS
-            var data = {{ data|safe }};
-
-            var options_chartBar = {
-                chart: { type: "bar", height: 350 },
-                series: [{ name: "Números", data: labels }], 
-                xaxis: { categories: data } 
-            };
-            var chartBar = new ApexCharts(document.querySelector("#chartBar"), options_chartBar);
-            chartBar.render(); 
-
-            var options_chartLine = {
-                chart: { type: "line", height: 350 },
-                series: [{ name: "Números", data: labels }], 
-                xaxis: { categories: data } 
-            };
-            var chartLine = new ApexCharts(document.querySelector("#chartLine"), options_chartLine);
-            chartLine.render(); 
-
-
-        </script>
-
 
     </body>
 
-    {% comment %} <script src="{% static 'gerador/js/analytics.js' %}"></script> {% endcomment %}
 </html>
