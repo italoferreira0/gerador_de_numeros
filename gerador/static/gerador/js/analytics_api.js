@@ -1,11 +1,8 @@
 async function fetchData() {
-    try {
-        const response = await fetch('http://127.0.0.1:8000/api/NumerosGerados/');
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.log('Erro ao buscar dados: ', error);
-    }
+    let response = await fetch('http://127.0.0.1:8000/api/NumerosGerados/');
+    let data = await response.json();
+    return data;
+     
 }
 
 async function apiData() {
@@ -37,7 +34,7 @@ async function apiData() {
             categories:date
         },
 
-        colors:['#FF6688']
+        colors:['#2e8b57']
 
 
     }
